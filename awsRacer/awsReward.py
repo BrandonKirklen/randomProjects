@@ -33,9 +33,10 @@ def reward_function(on_track, x, y, distance_from_center, car_orientation, progr
             return (0.01428571 + 3.085714*throttle - 6.285714*math.pow(throttle, 2)
                     + 3.2 * math.pow(x, 3))
 
-    finalReward = (centerReward(distance_from_center, track_width))
-                #   + progressReward(progress)
-                   + steeringReward(car_orientation, carCords, waypointCords, steering)
-                   + throttleReward(car_orientation, carCords, waypointCords, steering, throttle))
+    finalReward = (centerReward(distance_from_center, track_width) + 
+                   steeringReward(car_orientation, carCords, waypointCords, steering) + 
+                   throttleReward(car_orientation, carCords, waypointCords, steering, throttle)) # + 
+                #    progressReward(progress))
+
 
     return float(finalReward)
